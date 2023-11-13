@@ -13,3 +13,12 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
+
+
+const tasks = [];
+
+app.post('/add', (req, res) => {
+  const task = req.body.task;
+  tasks.push(task);
+  res.redirect('/');
+});
