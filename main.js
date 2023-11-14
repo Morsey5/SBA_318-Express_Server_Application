@@ -3,8 +3,6 @@ const fs = require('fs');
 
 const app = express();
 const port = 3000;
-//lost the ability to see, unsure if changes are showing as they should
-
 
 // Load users, tasks, and categories from JSON files
 const users = JSON.parse(fs.readFileSync('./data/users.json', 'utf-8'));
@@ -13,6 +11,7 @@ const categories = JSON.parse(fs.readFileSync('./data/categories.json', 'utf-8')
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(express.static('views'));
 app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 
@@ -30,16 +29,6 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something went wrong!');
 });
 
-router.get('/async-error', async (req, res, next) => {
-    try {
-      const result = await someAsyncOperation();
-      res.json(result);
-    } catch (error) {
-      next(error); // Pass the error to the error-handling middleware
-    }
-  });
-
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
-

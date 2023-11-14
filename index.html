@@ -13,27 +13,49 @@
 
   <div class="main-content">
     <h2>Categories</h2>
-    <ul class="category-list">
-      <% categories.forEach(category => { %>
-        <li><%= category.name %></li>
-      <% }); %>
-    </ul>
+    <ul id="categoryList" class="category-list"></ul>
 
     <h2>Tasks</h2>
-    <ul class="task-list">
-      <% tasks.forEach(task => { %>
-        <li>
-          <span><%= task.title %></span>
-          <span><%= task.description %></span>
-          <span><%= task.dueDate %></span>
-          <span>Status: <%= task.status %></span>
-          <span>User: <%= task.userId %></span>
-          <span>Category: <%= task.categoryId %></span>
-        </li>
-      <% }); %>
-    </ul>
+    <ul id="taskList" class="task-list"></ul>
   </div>
 
   <script src="main.js"></script>
+  <script>
+    // Assuming you have a global variable 'categories' and 'tasks' available from the server
+    const categories = [
+      { "id": 1, "name": "Work" },
+      { "id": 2, "name": "Personal" },
+      { "id": 3, "name": "Shopping" }
+    ];
+
+    const tasks = [
+      { "title": "Task 1", "description": "Description 1", "dueDate": "2023-11-30", "status": "Incomplete", "userId": 1, "categoryId": 1 },
+      // Add more tasks as needed
+    ];
+
+    const categoryList = document.getElementById('categoryList');
+    const taskList = document.getElementById('taskList');
+
+    // Render categories
+    categories.forEach(category => {
+      const li = document.createElement('li');
+      li.textContent = category.name;
+      categoryList.appendChild(li);
+    });
+
+    // Render tasks
+    tasks.forEach(task => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <span>Title: ${task.title}</span>
+        <span>Description: ${task.description}</span>
+        <span>Due Date: ${task.dueDate}</span>
+        <span>Status: ${task.status}</span>
+        <span>User: ${task.userId}</span>
+        <span>Category: ${task.categoryId}</span>
+      `;
+      taskList.appendChild(li);
+    });
+  </script>
 </body>
 </html>
