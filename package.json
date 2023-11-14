@@ -1,13 +1,13 @@
 {
-  "name": "sba_318-express-_server_application",
+  "name": "your-project",
   "version": "1.0.0",
+  "description": "Your project description",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1", 
     "start": "node main.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }

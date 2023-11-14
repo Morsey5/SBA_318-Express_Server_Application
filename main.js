@@ -1,24 +1,25 @@
+
+
 const express = require('express');
+const fs = require('fs');
+
 const app = express();
 const port = 3000;
 
+// Load tasks from JSON file
+const tasks = JSON.parse(fs.readFileSync('./data/tasks.json', 'utf-8'));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.set('view engine', 'html');
+app.engine('html', require('ejs').renderFile);
 
-app.get('/', (req, res) => {
-  // Render your to-do list page here
-  res.send('Hello, welcome to your To-Do List!');
-});
+const indexRoutes = require('./routes/index');
+const taskRoutes = require('./routes/tasks');
+
+app.use('/', indexRoutes);
+app.use('/tasks', taskRoutes);
 
 app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
-});
-
-
-const tasks = [];
-
-app.post('/add', (req, res) => {
-  const task = req.body.task;
-  tasks.push(task);
-  res.redirect('/');
+  console.log(`Server is running on http://localhost:${port}`);
 });

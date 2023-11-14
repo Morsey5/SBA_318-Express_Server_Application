@@ -4,16 +4,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do List</title>
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="styles.css">
+  <title>Task Management App</title>
 </head>
 <body>
-  <h1>To-Do List</h1>
-  <form id="addTaskForm">
-    <input type="text" id="taskInput" required>
-    <button type="submit">Add Task</button>
-  </form>
-  <ul id="taskList"></ul>
+  <div class="header">
+    <h1>Task Management App</h1>
+  </div>
+
+  <div class="main-content">
+    <ul class="task-list">
+      <% tasks.forEach(task => { %>
+        <li>
+          <span><%= task.title %></span>
+          <span><%= task.description %></span>
+          <span><%= task.dueDate %></span>
+          <span>Status: <%= task.status %></span>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
 
   <script src="main.js"></script>
 </body>
