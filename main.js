@@ -3,6 +3,8 @@ const fs = require('fs');
 
 const app = express();
 const port = 3000;
+//lost the ability to see, unsure if changes are showing as they should
+
 
 // Load users, tasks, and categories from JSON files
 const users = JSON.parse(fs.readFileSync('./data/users.json', 'utf-8'));
