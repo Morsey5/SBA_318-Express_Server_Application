@@ -1,30 +1,61 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0; /* Light gray background */
+    text-align: center;
     margin: 0;
     padding: 0;
   }
   
-  .header {
-    background-color: #333;
-    color: white;
-    padding: 15px;
-    text-align: center;
+  h1 {
+    color: #333; /* Dark gray text color */
   }
   
-  .main-content {
-    max-width: 800px;
-    margin: 20px auto;
+  form {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: #3498db; /* Blue button color */
+    color: #fff; /* White text color */
+    padding: 10px;
+    cursor: pointer;
   }
   
   ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
   }
   
   li {
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
+    background-color: #fff; /* White background for list items */
     padding: 10px;
+    margin-bottom: 5px;
     border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+  }
+  
+  #taskList,
+  #categoryList {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Center everything vertically and horizontally */
+  html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   
